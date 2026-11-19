@@ -64,15 +64,20 @@ public class Main {
         System.out.println("Nombre d'échéances générées : " + credit.getEcheances().size());
         System.out.println("Première échéance : " + credit.getEcheances().get(0));
 
-        System.out.println("\n=== GESTION DES FICHIERS (I/O) ===");
+        System.out.println("\n=== GESTION DES FICHIERS (I/O) : READ / WRITE ===");
         
-        // 1. Sauvegarde des clients dans un fichier texte
+        // 1. Démonstration explicite de WRITE et READ
+        GestionnaireFichier.ecrireFichier("note_projet.txt", "Projet 4IIR - Gestion Bancaire\nDate: 2026\nAuteurs: Groupe Java");
+        String contenuLu = GestionnaireFichier.lireFichier("note_projet.txt");
+        System.out.println("Contenu lu depuis 'note_projet.txt' :\n" + contenuLu);
+
+        // 2. Sauvegarde des clients dans un fichier texte (WRITE avec BufferedWriter)
         banque.sauvegarderClients("clients.txt");
 
-        // 2. Génération d'un relevé bancaire pour le compte cc1
+        // 3. Génération d'un relevé bancaire pour le compte cc1 (WRITE avec PrintWriter)
         banque.exporterReleve(cc1, "releve_cc1.txt");
 
-        // 3. Export du rapport global de la banque
+        // 4. Export du rapport global de la banque (WRITE)
         banque.exporterRapport("rapport_banque.txt");
 
         System.out.println("[Info] Le journal automatique a également été alimenté dans 'journal_operations.txt'.");

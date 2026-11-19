@@ -17,6 +17,51 @@ public class GestionnaireFichier {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
+    // =========================================================================
+    // 1. MÉTHODES FONDAMENTALES : WRITE (Écriture) et READ (Lecture)
+    // =========================================================================
+
+    /**
+     * WRITE : Écrit du contenu brut dans un fichier (écrase ou crée le fichier).
+     * Utilise FileWriter et la méthode write().
+     */
+    public static void ecrireFichier(String cheminFichier, String contenu) {
+        try (FileWriter fw = new FileWriter(cheminFichier)) {
+            fw.write(contenu); // <-- WRITE explicite
+            System.out.println("[WRITE] Fichier écrit avec succès : " + cheminFichier);
+        } catch (IOException e) {
+            System.err.println("[Erreur WRITE] Impossible d'écrire dans " + cheminFichier + " : " + e.getMessage());
+        }
+    }
+
+    /**
+     * READ : Lit l'intégralité d'un fichier texte et le retourne sous forme de chaîne.
+     * Utilise FileReader, BufferedReader et readLine().
+     */
+    public static String lireFichier(String cheminFichier) {
+        StringBuilder contenu = new StringBuilder();
+        File file = new File(cheminFichier);
+        if (!file.exists()) {
+            System.err.println("[READ] Le fichier n'existe pas : " + cheminFichier);
+            return "";
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String ligne;
+            while ((ligne = br.readLine()) != null) { // <-- READ ligne par ligne
+                contenu.append(ligne).append(System.lineSeparator());
+            }
+            System.out.println("[READ] Lecture terminée avec succès pour : " + cheminFichier);
+        } catch (IOException e) {
+            System.err.println("[Erreur READ] Impossible de lire " + cheminFichier + " : " + e.getMessage());
+        }
+        return contenu.toString();
+    }
+
+    // =========================================================================
+    // 2. MÉTHODES MÉTIER (Sauvegarde, Relevés, Logs)
+    // =========================================================================
+
     /**
      * Sauvegarde la liste des clients dans un fichier texte délimité par des points-virgules.
      */

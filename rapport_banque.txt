@@ -1,7 +1,7 @@
 ================================================================
                   RAPPORT GLOBAL DE LA BANQUE                   
 ================================================================
-Date du rapport   : 19/11/2026 10:05:42
+Date du rapport   : 19/11/2026 10:08:10
 Nombre de clients : 2
 Nombre de comptes : 2
 Total des dépôts  : 6700 DH
