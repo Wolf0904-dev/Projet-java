@@ -1,0 +1,14 @@
+================================================================
+                  RAPPORT GLOBAL DE LA BANQUE                   
+================================================================
+Date du rapport   : 19/11/2026 10:05:42
+Nombre de clients : 2
+Nombre de comptes : 2
+Total des dépôts  : 6700 DH
+Nb d'opérations   : 4
+Comptes à découvert : 0
+----------------------------------------------------------------
+LISTE DES COMPTES ET LEURS SOLDES :
+ - MA0001               | Titulaire: Alami                | Solde:       1200 DH
+ - MA0002               | Titulaire: Bennani              | Solde:       5500 DH
+================================================================

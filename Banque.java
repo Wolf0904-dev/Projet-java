@@ -20,6 +20,7 @@ public class Banque {
         boolean reglesOk = regles.stream().allMatch(r -> r.estValide(op));
         if (reglesOk && op.executer()) {
             historique.add(op);
+            GestionnaireFichier.journaliserOperation(op, "journal_operations.txt");
             return true;
         }
         return false;
@@ -85,5 +86,26 @@ public class Banque {
         return credits.stream()
                 .filter(c -> "EN_ATTENTE".equals(c.getStatut()))
                 .collect(Collectors.toList());
+    }
+
+    public void sauvegarderClients(String cheminFichier) {
+        GestionnaireFichier.sauvegarderClients(clients, cheminFichier);
+    }
+
+    public void chargerClients(String cheminFichier) {
+        List<Client> charges = GestionnaireFichier.chargerClients(cheminFichier);
+        for (Client c : charges) {
+            if (clients.stream().noneMatch(existing -> existing.getCin().equalsIgnoreCase(c.getCin()))) {
+                clients.add(c);
+            }
+        }
+    }
+
+    public void exporterReleve(Compte compte, String cheminFichier) {
+        GestionnaireFichier.genererReleveCompte(compte, historique, cheminFichier);
+    }
+
+    public void exporterRapport(String cheminFichier) {
+        GestionnaireFichier.exporterRapportBanque(this, cheminFichier);
     }
 }

@@ -64,6 +64,17 @@ public class Main {
         System.out.println("Nombre d'échéances générées : " + credit.getEcheances().size());
         System.out.println("Première échéance : " + credit.getEcheances().get(0));
 
+        System.out.println("\n=== GESTION DES FICHIERS (I/O) ===");
         
+        // 1. Sauvegarde des clients dans un fichier texte
+        banque.sauvegarderClients("clients.txt");
+
+        // 2. Génération d'un relevé bancaire pour le compte cc1
+        banque.exporterReleve(cc1, "releve_cc1.txt");
+
+        // 3. Export du rapport global de la banque
+        banque.exporterRapport("rapport_banque.txt");
+
+        System.out.println("[Info] Le journal automatique a également été alimenté dans 'journal_operations.txt'.");
     }
 }
