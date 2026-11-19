@@ -5,14 +5,13 @@ public abstract class Compte {
     protected String numero;
     protected Client titulaire;
     protected BigDecimal solde = BigDecimal.ZERO;
-    protected String statut = "ACTIF";          
+    protected String statut = "ACTIF";
 
     public Compte(String numero, Client titulaire) {
         this.numero = numero;
         this.titulaire = titulaire;
     }
 
-   
     public abstract boolean peutRetirer(BigDecimal montant);
     public abstract String getType();
 
@@ -33,7 +32,7 @@ public abstract class Compte {
     public void debloquer() { statut = "ACTIF"; }
 
     public boolean cloturer() {
-        if (solde.signum() != 0) return false;   // solde nul obligatoire
+        if (solde.signum() != 0) return false;
         statut = "CLOTURE";
         return true;
     }

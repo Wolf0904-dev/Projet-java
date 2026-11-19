@@ -8,10 +8,8 @@ public class Main {
         System.out.println("=== INITIALISATION DE LA BANQUE ===");
         Banque banque = new Banque();
 
-        
         banque.ajouterRegle(op -> op.getMontant().compareTo(BigDecimal.valueOf(100000)) <= 0);
 
-        
         Guichetier guichetier = new Guichetier("Ali Benani", "ali", "pass123");
         directeur dir = new directeur("Karim Idrissi", "karim", "adminpass");
         administrateur admin = new administrateur("Sara Mansouri", "sara", "rootpass");
@@ -21,20 +19,17 @@ public class Main {
         System.out.println("Menu Directeur : " + dir.getMenu());
         System.out.println("Menu Administrateur : " + admin.getMenu());
 
-        
         Client client1 = guichetier.creerClient(banque, "Alami", "Yassine", "AB123456");
         Client client2 = guichetier.creerClient(banque, "Bennani", "Fatima", "CD789012");
         System.out.println("\nClients créés : ");
         banque.getClients().forEach(c -> System.out.println(" - " + c));
 
-        
-        Compte cc1 = guichetier.ouvrirCompteCourant(banque, client1, BigDecimal.valueOf(500)); 
-        Compte ce2 = guichetier.ouvrirCompteEpargne(banque, client2, BigDecimal.valueOf(2.5)); 
+        Compte cc1 = guichetier.ouvrirCompteCourant(banque, client1, BigDecimal.valueOf(500));
+        Compte ce2 = guichetier.ouvrirCompteEpargne(banque, client2, BigDecimal.valueOf(2.5));
 
         System.out.println("\nComptes ouverts : ");
         banque.getComptes().forEach(c -> System.out.println(" - " + c));
 
-        
         System.out.println("\n=== OPERATIONS BANCAIRES ===");
         guichetier.versement(banque, cc1, BigDecimal.valueOf(2000));
         guichetier.versement(banque, ce2, BigDecimal.valueOf(5000));
@@ -49,7 +44,6 @@ public class Main {
         System.out.println(" - " + ce2);
         System.out.println("Total des dépôts : " + banque.totalDepots() + " DH");
 
-        
         System.out.println("\n=== GESTION DES CREDITS ===");
         BigDecimal mensualite = guichetier.simulerCredit(client1, BigDecimal.valueOf(100000), 12, BigDecimal.valueOf(5.0));
         System.out.println("Mensualité estimée (100000 DH sur 12 mois à 5%) : " + mensualite + " DH");
@@ -58,26 +52,21 @@ public class Main {
         System.out.println("Demande créée : " + credit);
         System.out.println("Crédits en attente : " + banque.creditsEnAttente().size());
 
-        
         dir.validerCredit(credit);
         System.out.println("Statut après validation directeur : " + credit.getStatut());
         System.out.println("Nombre d'échéances générées : " + credit.getEcheances().size());
         System.out.println("Première échéance : " + credit.getEcheances().get(0));
 
         System.out.println("\n=== GESTION DES FICHIERS (I/O) : READ / WRITE ===");
-        
-        // 1. Démonstration explicite de WRITE et READ
+
         GestionnaireFichier.ecrireFichier("note_projet.txt", "Projet 4IIR - Gestion Bancaire\nDate: 2026\nAuteurs: Groupe Java");
         String contenuLu = GestionnaireFichier.lireFichier("note_projet.txt");
         System.out.println("Contenu lu depuis 'note_projet.txt' :\n" + contenuLu);
 
-        // 2. Sauvegarde des clients dans un fichier texte (WRITE avec BufferedWriter)
         banque.sauvegarderClients("clients.txt");
 
-        // 3. Génération d'un relevé bancaire pour le compte cc1 (WRITE avec PrintWriter)
         banque.exporterReleve(cc1, "releve_cc1.txt");
 
-        // 4. Export du rapport global de la banque (WRITE)
         banque.exporterRapport("rapport_banque.txt");
 
         System.out.println("[Info] Le journal automatique a également été alimenté dans 'journal_operations.txt'.");

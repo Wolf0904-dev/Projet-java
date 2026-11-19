@@ -67,5 +67,4 @@ public class personne {
 				+ ", status=" + status + ", email=" + email + ", numero=" + numero + "]";
 	}
 
-	
 }

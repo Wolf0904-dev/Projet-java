@@ -14,7 +14,7 @@ public class Client {
         this.cin = cin;
     }
 
-    public void archiver() { actif = false; }   
+    public void archiver() { actif = false; }
 
     public String getNom() { return nom; }
     public String getPrenom() { return prenom; }
@@ -24,5 +24,4 @@ public class Client {
     @Override
     public String toString() { return prenom + " " + nom + " (" + cin + ")"; }
 }
-	
 

@@ -6,3 +6,7 @@
 [19/11/2026 10:08:10] ID:2 | Type:VERSEMENT | Montant:5000 DH | Compte:MA0002 | Statut:VALIDEE
 [19/11/2026 10:08:10] ID:3 | Type:RETRAIT | Montant:300 DH | Compte:MA0001 | Statut:VALIDEE
 [19/11/2026 10:08:10] ID:4 | Type:VIREMENT | Montant:500 DH | Compte:MA0001 | Statut:VALIDEE
+[19/11/2026 10:16:37] ID:1 | Type:VERSEMENT | Montant:2000 DH | Compte:MA0001 | Statut:VALIDEE
+[19/11/2026 10:16:37] ID:2 | Type:VERSEMENT | Montant:5000 DH | Compte:MA0002 | Statut:VALIDEE
+[19/11/2026 10:16:37] ID:3 | Type:RETRAIT | Montant:300 DH | Compte:MA0001 | Statut:VALIDEE
+[19/11/2026 10:16:37] ID:4 | Type:VIREMENT | Montant:500 DH | Compte:MA0001 | Statut:VALIDEE

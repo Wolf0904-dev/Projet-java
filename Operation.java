@@ -6,10 +6,10 @@ public abstract class Operation {
     private static int compteur = 0;
 
     private int id;
-    protected Compte compte;               
+    protected Compte compte;
     protected BigDecimal montant;
     private LocalDateTime date = LocalDateTime.now();
-    private String statut = "VALIDEE";  
+    private String statut = "VALIDEE";
     private String motif;
 
     public Operation(Compte compte, BigDecimal montant) {
@@ -18,11 +18,10 @@ public abstract class Operation {
         this.montant = montant;
     }
 
-    public abstract boolean executer();          
-    public abstract Operation creerInverse();    
+    public abstract boolean executer();
+    public abstract Operation creerInverse();
     public abstract String getType();
 
-    
     public Operation annuler(String justification) {
         if (statut.equals("ANNULEE") || justification == null || justification.isBlank()) return null;
         statut = "ANNULEE";

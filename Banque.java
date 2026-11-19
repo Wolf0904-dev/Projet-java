@@ -8,14 +8,13 @@ public class Banque {
     private List<Client> clients = new ArrayList<>();
     private List<Compte> comptes = new ArrayList<>();
     private List<Operation> historique = new ArrayList<>();
-    private List<RegleOperation> regles = new ArrayList<>();  
+    private List<RegleOperation> regles = new ArrayList<>();
     private List<Credit> credits = new ArrayList<>();
 
     public void ajouterClient(Client c) { clients.add(c); }
     public void ajouterCompte(Compte c) { comptes.add(c); }
     public void ajouterRegle(RegleOperation r) { regles.add(r); }
 
-    
     public boolean effectuer(Operation op) {
         boolean reglesOk = regles.stream().allMatch(r -> r.estValide(op));
         if (reglesOk && op.executer()) {
@@ -51,7 +50,6 @@ public class Banque {
         return comptes.stream().filter(c -> c.getNumero().equals(numero)).findFirst();
     }
 
-    
     public List<Operation> filtrerOperations(Predicate<Operation> filtre) {
         return historique.stream().filter(filtre).collect(Collectors.toList());
     }

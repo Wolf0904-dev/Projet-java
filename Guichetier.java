@@ -54,12 +54,10 @@ public class Guichetier extends Utilisateur {
         return banque.effectuer(new Virement(source, dest, montant));
     }
 
-    // Simulation : on calcule la mensualité sans rien enregistrer
     public BigDecimal simulerCredit(Client client, BigDecimal montant, int duree, BigDecimal taux) {
         return new Credit(client, montant, duree, taux).calculerMensualite();
     }
 
-    // La demande est transmise au directeur (statut EN_ATTENTE)
     public Credit enregistrerDemandeCredit(Banque banque, Client client, BigDecimal montant,
                                            int duree, BigDecimal taux) {
         Credit credit = new Credit(client, montant, duree, taux);
@@ -67,7 +65,6 @@ public class Guichetier extends Utilisateur {
         return credit;
     }
 
-    // Numéro unique généré automatiquement
     private String genererNumero(Banque banque) {
         return "MA" + String.format("%04d", banque.getComptes().size() + 1);
     }

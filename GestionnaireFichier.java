@@ -7,37 +7,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Classe utilitaire pour la gestion des fichiers (I/O) :
- * - Sauvegarde et chargement des clients (format texte / CSV)
- * - Journalisation automatique des opérations (log en mode ajout/append)
- * - Génération de relevés de compte et rapports bancaires
- */
 public class GestionnaireFichier {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
-    // =========================================================================
-    // 1. MÉTHODES FONDAMENTALES : WRITE (Écriture) et READ (Lecture)
-    // =========================================================================
-
-    /**
-     * WRITE : Écrit du contenu brut dans un fichier (écrase ou crée le fichier).
-     * Utilise FileWriter et la méthode write().
-     */
     public static void ecrireFichier(String cheminFichier, String contenu) {
         try (FileWriter fw = new FileWriter(cheminFichier)) {
-            fw.write(contenu); // <-- WRITE explicite
+            fw.write(contenu);
             System.out.println("[WRITE] Fichier écrit avec succès : " + cheminFichier);
         } catch (IOException e) {
             System.err.println("[Erreur WRITE] Impossible d'écrire dans " + cheminFichier + " : " + e.getMessage());
         }
     }
 
-    /**
-     * READ : Lit l'intégralité d'un fichier texte et le retourne sous forme de chaîne.
-     * Utilise FileReader, BufferedReader et readLine().
-     */
     public static String lireFichier(String cheminFichier) {
         StringBuilder contenu = new StringBuilder();
         File file = new File(cheminFichier);
@@ -48,7 +30,7 @@ public class GestionnaireFichier {
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String ligne;
-            while ((ligne = br.readLine()) != null) { // <-- READ ligne par ligne
+            while ((ligne = br.readLine()) != null) {
                 contenu.append(ligne).append(System.lineSeparator());
             }
             System.out.println("[READ] Lecture terminée avec succès pour : " + cheminFichier);
@@ -58,17 +40,10 @@ public class GestionnaireFichier {
         return contenu.toString();
     }
 
-    // =========================================================================
-    // 2. MÉTHODES MÉTIER (Sauvegarde, Relevés, Logs)
-    // =========================================================================
-
-    /**
-     * Sauvegarde la liste des clients dans un fichier texte délimité par des points-virgules.
-     */
     public static void sauvegarderClients(List<Client> clients, String cheminFichier) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(cheminFichier))) {
             for (Client c : clients) {
-                // Format : nom;prenom;cin;actif
+
                 String ligne = c.getNom() + ";" + c.getPrenom() + ";" + c.getCin() + ";" + c.isActif();
                 bw.write(ligne);
                 bw.newLine();
@@ -79,9 +54,6 @@ public class GestionnaireFichier {
         }
     }
 
-    /**
-     * Charge les clients depuis un fichier texte délimité par des points-virgules.
-     */
     public static List<Client> chargerClients(String cheminFichier) {
         List<Client> clients = new ArrayList<>();
         File fichier = new File(cheminFichier);
@@ -115,9 +87,6 @@ public class GestionnaireFichier {
         return clients;
     }
 
-    /**
-     * Journalise une opération dans un fichier journal (mode append / ajout sans écraser).
-     */
     public static void journaliserOperation(Operation op, String cheminJournal) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(cheminJournal, true))) {
             String dateStr = op.getDate() != null ? op.getDate().format(FORMATTER) : LocalDateTime.now().format(FORMATTER);
@@ -134,9 +103,6 @@ public class GestionnaireFichier {
         }
     }
 
-    /**
-     * Génère un relevé de compte officiel au format texte.
-     */
     public static void genererReleveCompte(Compte compte, List<Operation> operations, String cheminFichier) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(cheminFichier))) {
             pw.println("================================================================");
@@ -176,9 +142,6 @@ public class GestionnaireFichier {
         }
     }
 
-    /**
-     * Exporte un rapport global d'audit de la banque dans un fichier texte.
-     */
     public static void exporterRapportBanque(Banque banque, String cheminFichier) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(cheminFichier))) {
             pw.println("================================================================");

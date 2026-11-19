@@ -12,7 +12,7 @@ public class Virement extends Operation {
     @Override
     public boolean executer() {
         if (compte == destination) return false;
-        // Atomique : on vérifie les deux comptes AVANT de modifier quoi que ce soit
+
         boolean sourceOk = compte.getStatut().equals("ACTIF") && montant.signum() > 0 && compte.peutRetirer(montant);
         boolean destOk = destination.getStatut().equals("ACTIF");
         if (!sourceOk || !destOk) return false;

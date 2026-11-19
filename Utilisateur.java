@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Utilisateur extends personne {
     private String login;
-    private String motDePasseHash;   
+    private String motDePasseHash;
     private Role role;
     private boolean actif = true;
 

@@ -12,9 +12,9 @@ import java.util.stream.IntStream;
 public class Credit {
     private Client client;
     private BigDecimal montant;
-    private int duree;            // en mois
-    private BigDecimal taux;      // % par an
-    private String statut = "EN_ATTENTE";   // EN_ATTENTE, VALIDE, REFUSE
+    private int duree;
+    private BigDecimal taux;
+    private String statut = "EN_ATTENTE";
     private String motifRefus;
     private List<Echeance> echeances = new ArrayList<>();
 
@@ -25,7 +25,6 @@ public class Credit {
         this.taux = taux;
     }
 
-    // Mensualité = P*r / (1 - (1+r)^-n) avec r = taux annuel / 12
     public BigDecimal calculerMensualite() {
         BigDecimal r = taux.divide(BigDecimal.valueOf(1200), MathContext.DECIMAL64);
         if (r.signum() == 0) return montant.divide(BigDecimal.valueOf(duree), 2, RoundingMode.HALF_UP);
@@ -33,7 +32,6 @@ public class Credit {
         return montant.multiply(r).multiply(p).divide(p.subtract(BigDecimal.ONE), 2, RoundingMode.HALF_UP);
     }
 
-    // Stream : on génère les échéances de 1 à durée
     public void valider() {
         statut = "VALIDE";
         BigDecimal mensualite = calculerMensualite();

@@ -3,7 +3,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class CompteEpargne extends Compte {
-    private BigDecimal tauxInteret;  
+    private BigDecimal tauxInteret;
 
     public CompteEpargne(String numero, Client titulaire, BigDecimal tauxInteret) {
         super(numero, titulaire);
@@ -12,7 +12,7 @@ public class CompteEpargne extends Compte {
 
     @Override
     public boolean peutRetirer(BigDecimal montant) {
-        return solde.compareTo(montant) >= 0;  
+        return solde.compareTo(montant) >= 0;
     }
 
     @Override
