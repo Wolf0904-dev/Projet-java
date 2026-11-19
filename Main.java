@@ -57,18 +57,15 @@ public class Main {
         System.out.println("Nombre d'échéances générées : " + credit.getEcheances().size());
         System.out.println("Première échéance : " + credit.getEcheances().get(0));
 
-        System.out.println("\n=== GESTION DES FICHIERS (I/O) : READ / WRITE ===");
-
-        GestionnaireFichier.ecrireFichier("note_projet.txt", "Projet 4IIR - Gestion Bancaire\nDate: 2026\nAuteurs: Groupe Java");
-        String contenuLu = GestionnaireFichier.lireFichier("note_projet.txt");
-        System.out.println("Contenu lu depuis 'note_projet.txt' :\n" + contenuLu);
+        System.out.println("\n=== GESTION DES FICHIERS BANCAIRES ===");
 
         banque.sauvegarderClients("clients.txt");
 
         banque.exporterReleve(cc1, "releve_cc1.txt");
 
-        banque.exporterRapport("rapport_banque.txt");
+        String releveLu = GestionnaireFichier.lireFichier("releve_cc1.txt");
+        System.out.println(releveLu);
 
-        System.out.println("[Info] Le journal automatique a également été alimenté dans 'journal_operations.txt'.");
+        banque.exporterRapport("rapport_banque.txt");
     }
 }

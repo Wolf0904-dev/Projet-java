@@ -1,7 +1,7 @@
 ================================================================
                      RELEVE DE COMPTE                           
 ================================================================
-Date d'édition : 19/11/2026 10:16:37
+Date d'édition : 19/11/2026 10:18:29
 Titulaire      : Yassine Alami
 CIN            : AB123456
 Numéro Compte  : MA0001
@@ -11,9 +11,9 @@ Solde Actuel   : 1200 DH
 ----------------------------------------------------------------
 HISTORIQUE DES OPERATIONS DU COMPTE :
 ----------------------------------------------------------------
- 19/11/2026 10:16:37 | VERSEMENT    | Montant:       2000 DH | [VALIDEE]
- 19/11/2026 10:16:37 | RETRAIT      | Montant:        300 DH | [VALIDEE]
- 19/11/2026 10:16:37 | VIREMENT     | Montant:        500 DH | [VALIDEE]
+ 19/11/2026 10:18:29 | VERSEMENT    | Montant:       2000 DH | [VALIDEE]
+ 19/11/2026 10:18:29 | RETRAIT      | Montant:        300 DH | [VALIDEE]
+ 19/11/2026 10:18:29 | VIREMENT     | Montant:        500 DH | [VALIDEE]
 ================================================================
                   FIN DU RELEVE DE COMPTE                       
 ================================================================
